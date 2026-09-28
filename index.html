@@ -150,27 +150,28 @@
           </tr>
         </tbody>
       </table>
-    </div>`}function WP(e,t,n,r,i){let a=CP(e.sessions),o=[e.prefix,e.name].filter(Boolean).join(` `),s=e.inactiveDate?`${e.status} (${H(e.inactiveDate)})`:e.status,c=e.sessions.map((t,n)=>i===`compact`?UP(t,e.sessions.length-n):HP(t,e.sessions.length-n)).join(``);return`
+    </div>`}function WP(e,t,n,r,i){let a=[e.prefix,e.name].filter(Boolean).join(` `),o=e.sessions.map((t,n)=>i===`compact`?UP(t,e.sessions.length-n):HP(t,e.sessions.length-n)).join(``),s=i===`compact`?``:(()=>{let t=CP(e.sessions),n=e.inactiveDate?`${e.status} (${H(e.inactiveDate)})`:e.status;return`
+      <table class="p-profile">
+        <tr><th>ตำแหน่งปัจจุบัน</th><td>${U(e.position??`-`)}</td><th>สังกัดปัจจุบัน</th><td>${U(e.dept??`-`)}</td></tr>
+        <tr><th>Group</th><td>${U(e.group??`-`)}</td><th>PG ปัจจุบัน</th><td>${e.pg??`-`}</td></tr>
+        <tr><th>อายุ</th><td>${e.birthDate?le(e.birthDate,r):`-`}</td><th>สถานะ</th><td>${U(n)}</td></tr>
+        <tr><th>วันเริ่มงาน</th><td>${e.hireDate?`${H(e.hireDate)} · ${ue(e.hireDate,r)}`:`-`}</td><th>สรุป</th><td>สอบ ${t.count} ครั้ง · ผ่าน ${t.pass} · ไม่ผ่าน ${t.fail}</td></tr>
+      </table>`})();return`
     <section class="p-page">
       <header class="p-head">
         <div class="p-head-bar" aria-hidden="true"></div>
         <div class="p-head-main">
           <div>
             <div class="p-kicker">Interview History Record · ประวัติการสอบโปรโมท</div>
-            <h1>${U(o)}${e.nickname?` <span class="p-nick">(${U(e.nickname)})</span>`:``}</h1>
+            <h1>${U(a)}${e.nickname?` <span class="p-nick">(${U(e.nickname)})</span>`:``}</h1>
             <div class="p-sub mono">รหัส ${U(e.empId)}${e.nameEn?` · ${U(e.nameEn)}`:``}</div>
           </div>
           <div class="p-meta">พิมพ์ ${se(n)}<br>ข้อมูล: ${U(t)}</div>
         </div>
       </header>
-      <table class="p-profile">
-        <tr><th>ตำแหน่งปัจจุบัน</th><td>${U(e.position??`-`)}</td><th>สังกัดปัจจุบัน</th><td>${U(e.dept??`-`)}</td></tr>
-        <tr><th>Group</th><td>${U(e.group??`-`)}</td><th>PG ปัจจุบัน</th><td>${e.pg??`-`}</td></tr>
-        <tr><th>อายุ</th><td>${e.birthDate?le(e.birthDate,r):`-`}</td><th>สถานะ</th><td>${U(s)}</td></tr>
-        <tr><th>วันเริ่มงาน</th><td>${e.hireDate?`${H(e.hireDate)} · ${ue(e.hireDate,r)}`:`-`}</td><th>สรุป</th><td>สอบ ${a.count} ครั้ง · ผ่าน ${a.pass} · ไม่ผ่าน ${a.fail}</td></tr>
-      </table>
+      ${s}
       <div class="p-body">
-        ${c}
+        ${o}
       </div>
       <footer class="p-foot">Interview History · เอกสารนี้สร้างจากระบบอัตโนมัติ ณ วันที่พิมพ์</footer>
     </section>`}function GP(e,t,n,r,i=`full`){return e.map(e=>WP(e,t,n,r,i)).join(``)}function KP(e,t){return e.length===1?`ประวัติการสอบ_${e[0].empId}_${e[0].name}`:`ประวัติการสอบ_${e.length}คน_${t}`}function qP(e,t,n=`full`){if(e.length===0)return;let r=document.getElementById(`print-root`),i=ce();r.innerHTML=GP(e,t.fileName,new Date,i,n);let a=document.title;document.title=KP(e,i),document.body.classList.add(`printing`);let o=()=>{document.body.classList.remove(`printing`),r.innerHTML=``,document.title=a,window.removeEventListener(`afterprint`,o)};window.addEventListener(`afterprint`,o),window.print()}var JP=(e,t)=>`<div><dt>${U(e)}</dt><dd>${t===null||t===``?`-`:U(t)}</dd></div>`,YP=(e,t,n=``)=>`<div class="stat${n?` stat-${n}`:``}"><div class="stat-label">${U(e)}</div><div class="stat-value">${t}</div></div>`,XP=(e,t,n)=>`<div class="move-pos">${U(e??`-`)}</div><div class="muted small">${U(t??`-`)}${n==null?``:` · PG ${n}`}</div>`;function ZP(e){return`
